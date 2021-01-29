@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class PenlightService extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('penlight_service', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('name');
-            $table->text('email');
-            $table->longText('password');
+            $table->text('yogo');
+            $table->text('yogo_yomi');
+            $table->longText('release_date');
+            $table->longText('explanation');
             $table->longText('created_at');
             $table->timestamp('update_at');
+            $table->longText('del_flg');
         });
     }
 
@@ -30,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        //
     }
 }

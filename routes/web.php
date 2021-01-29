@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/************************************************
+ *  管理者画面ルーティング(非ログイン)
+ ************************************************/
+Route::middleware('guest:admin')->group(function(){
+    Route::get('/',   'Admin\Auth\LoginController@showLoginForm')->name('admin/login');
+    Route::get('/login',   'Admin\Auth\LoginController@showLoginForm')->name('admin/login');
+    Route::post('/login',   'Admin\Auth\LoginController@login')->name('admin/login/submit');
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
